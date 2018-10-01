@@ -7,4 +7,11 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
+
+```{r, message=FALSE}
+raw <- read_csv("polls_IT-parliament_2018-10-01.csv")
+```
+
+The purpose of this document is to show polling results in Italy. 
