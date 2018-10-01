@@ -11,7 +11,18 @@ library(tidyverse)
 ```
 
 ```{r, message=FALSE}
-raw <- read_csv("polls_IT-parliament_2018-10-01.csv")
+x <- read_csv("polls_IT-parliament_2018-10-01.csv") 
 ```
 
 The purpose of this document is to show polling results in Italy. 
+
+```{r first_plot}
+x %>% 
+  select(date, firm, n, LN, M5S, PD, FIPDLFI) %>% 
+  gather(key = "party", value = "poll", LN:FIPDLFI) %>% 
+  filter(date >= "2017-09-26") %>% 
+  ggplot(aes(x = date, y = poll, color = party)) +
+    geom_smooth() +
+    geom_point(alpha = .1)
+```
+
